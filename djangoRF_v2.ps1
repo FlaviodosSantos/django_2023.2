@@ -1,0 +1,1 @@
+python -m venv venv ; .\venv\Scripts\activate ; pip install django djangorestframework ; django-admin startproject my_project . ; django-admin startapp core ; 

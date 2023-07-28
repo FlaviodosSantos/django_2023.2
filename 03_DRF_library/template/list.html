@@ -1,0 +1,21 @@
+<html>
+
+<body>
+    <h1>Profiles</h1>
+    <ul>
+        {% for book in books %}
+        <p>
+            <li>id: {{ book.id_book }}</li>
+            <li>title: {{ book.title }}</li>
+            <li>author: {{ book.author }}</li>
+        </p>
+        id_book={{book.id_book}}
+        <button action="" method="POST">Editar</button>
+        {% endfor %}
+        <p>
+            <button type="submit">Adicionar</button>
+        </p>
+    </ul>
+</body>
+
+</html>
