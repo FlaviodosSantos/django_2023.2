@@ -13,7 +13,7 @@ media
 *.env
 *.venv
 env/
-env/
+venv/
 *venv/
 *venv/
 ENV/
@@ -21,3 +21,6 @@ env.bak/
 venv.bak/
 
 *.vscode
+
+08_CRUD_quarter/
+08_CRUD_quarter

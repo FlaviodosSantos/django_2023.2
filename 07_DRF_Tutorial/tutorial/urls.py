@@ -1,5 +1,5 @@
 """
-URL configuration for image_upload project.
+URL configuration for tutorial project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,19 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from django.conf import settings
-from django.conf.urls.static import static
-from image_app.views import hotel_image_view, success, index
-
-from image_app.views import display_hotel_images, hotel_delete
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('image_upload', hotel_image_view, name='image_upload'),
-    path('success', success, name='success'),
-    path('index', index, name='teste'),
-    path('hotel_images', display_hotel_images, name='hotel_images'),
-    path('delete/<int:id>/', hotel_delete, name='deletar'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', include('snippets.urls')),
+]

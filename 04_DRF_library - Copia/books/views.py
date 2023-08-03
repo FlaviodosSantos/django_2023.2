@@ -3,7 +3,7 @@ import requests  # faz requisições HTTP
 
 
 def index(request):
-    api = "http://127.0.0.1:8000/books/"
+    api = "http://127.0.0.1:3000/books/"
     requisicao = requests.get(api)
 
     try:

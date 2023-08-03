@@ -1,0 +1,20 @@
+{% load static %}
+
+
+<h1>Teste</h1>
+
+<img src="media/cb500_F.jpg" alt="My image">
+
+<a href="media/cb500_F.jpg" download="moto">Download</a>
+
+{% for hotel in hotel_images %}
+<div class="col-md-4">
+    <h1>{{ hotel.name }}</h1>
+    <img src={{hotel.hotel_Main_Img.url}} class="img-responsive" style="width: 10%; float: left; margin-right: 10px;"
+        alt="imagens" />
+    <a href="{{hotel.hotel_Main_Img.url}}" download="hotel_">Download</a>
+    <a href="{{hotel.hotel_Main_Img.url}}">Visualizar</a>
+    <a href="{% url 'deletar' hotel.id %}" method="POST">
+        {{hotel.id}}Delete</a>
+</div>
+{% endfor %}
