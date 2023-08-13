@@ -36,6 +36,8 @@ class UserDetail(generics.RetrieveAPIView):
 
 
 '''
+
+
 ############################################################################
 
 # Views baseadas em classes mixins
