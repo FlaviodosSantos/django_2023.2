@@ -1,12 +1,33 @@
 # Views usando views genéricas do DRF
 
-from snippets.models import Snippet
-from snippets.serializers import SnippetSerializer, UserSerializer
-from rest_framework import generics
-
 from django.contrib.auth.models import User
-from rest_framework import permissions
-from snippets.permissions import IsOwnerOrReadOnly
+from rest_framework import generics, permissions, renderers  # new
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+from .models import Snippet
+from .permissions import IsOwnerOrReadOnly
+from .serializers import SnippetSerializer, UserSerializer
+
+
+class SnippetHighlight(generics.GenericAPIView):  # new
+    queryset = Snippet.objects.all()
+    renderer_classes = (renderers.StaticHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        snippet = self.get_object()
+        return Response(snippet.highlighted)
+
+
+@api_view(["GET"])  # new
+def api_root(request, format=None):
+    return Response(
+        {
+            "users": reverse("user-list", request=request, format=format),
+            "snippets": reverse("snippet-list", request=request, format=format),
+        }
+    )
 
 
 class SnippetList(generics.ListCreateAPIView):
@@ -21,8 +42,8 @@ class SnippetList(generics.ListCreateAPIView):
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly]
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly)
 
 
 class UserList(generics.ListAPIView):
@@ -35,6 +56,7 @@ class UserDetail(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
 
+# teste
 '''
 
 
