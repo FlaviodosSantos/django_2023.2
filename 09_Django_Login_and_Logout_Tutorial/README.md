@@ -11,3 +11,6 @@ https://learndjango.com/tutorials/django-signup-tutorial
 
 https://learndjango.com/tutorials/django-password-reset-tutorial
 
+## Parte 3.1 - Configurando servidor Gmail
+
+https://youtu.be/JSwofXOC4OY
